@@ -15,9 +15,20 @@
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
-      <li><a href="#">投稿</a></li>
+      <li class="
+<%= 'active' if current_page?(user_path(@user)) %>
+">
+<%= link_to user_path(@user) do %>
+投稿<span class="badge">
+<%= @count_cocktailposts %>
+</span>
+件
+<% end %>
+</li>
       <li><a href="#">フォロワー</a></li>
       <li><a href="#">フォローしてる人</a></li>
     </ul>
+    
+<%= render 'cocktailposts/cocktailposts', cocktailposts: @cocktailposts %>
   </div>
 </div>

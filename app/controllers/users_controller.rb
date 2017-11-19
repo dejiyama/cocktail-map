@@ -6,6 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @cocktailposts = @user.cocktailposts.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def new
