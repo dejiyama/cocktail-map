@@ -28,6 +28,6 @@ class User < ApplicationRecord
   end
   
   def feed_cocktailposts
-    Cocktailpost.where(user_id: self.followings_ids + [self.id])
+    Cocktailpost.where(user_id: self.following_ids + [self.id])
   end
 end
