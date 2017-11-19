@@ -12,6 +12,9 @@
 " alt="">
       </div>
     </div>
+    
+<%= render 'relationships/follow_button', user: @user %>
+
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
@@ -25,8 +28,24 @@
 件
 <% end %>
 </li>
-      <li><a href="#">フォロワー</a></li>
-      <li><a href="#">フォローしてる人</a></li>
+      <li class="
+<%= 'active' if current_page?(follwings_user_path(@user)) %>
+"><%= @count_followings %>
+<span class="badge">
+</span>
+人をフォロー中
+<% end %>
+</li>
+      <li class="
+<%= 'active' if current_page?(followers_user_path(@user)) %>
+">
+<%= link_to followers_user_path(@user) do %>
+フォロワー<span class="badge">
+<%= @count_followers %>
+</span>
+人
+<% end %>
+      </li>
     </ul>
     
 <%= render 'cocktailposts/cocktailposts', cocktailposts: @cocktailposts %>
