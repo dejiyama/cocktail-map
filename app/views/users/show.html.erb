@@ -4,7 +4,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">
 <%= @user.name %>
-        </h3>
+</h3>
       </div>
       <div class="panel-body">
         <img class="media-object img-rounded img-responsive" src="
@@ -29,8 +29,10 @@
 <% end %>
 </li>
       <li class="
-<%= 'active' if current_page?(follwings_user_path(@user)) %>
-"><%= @count_followings %>
+<%= 'active' if current_page?(followings_user_path(@user)) %>
+">
+<%= link_to followings_user_path(@user) do %>
+<%= @count_followings %>
 <span class="badge">
 </span>
 人をフォロー中
@@ -45,9 +47,10 @@
 </span>
 人
 <% end %>
-      </li>
+</li>
     </ul>
     
 <%= render 'cocktailposts/cocktailposts', cocktailposts: @cocktailposts %>
+
   </div>
 </div>

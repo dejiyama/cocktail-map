@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   end
  end
  
- resources :cocktailposts,only: [:createm, :destroy]
  resources :cocktailposts, only: [:create, :destroy]
+ resources :relationships, only: [:create, :destroy]
 end
