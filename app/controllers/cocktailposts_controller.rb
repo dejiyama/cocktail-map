@@ -8,7 +8,7 @@ class CocktailpostsController < ApplicationController
       flash[:success] = 'レシピをシェアしました。'
       redirect_to root_url
     else
-      @cocktailposts = current_user.cocktailposts.order('created_at DESC').page(params[:page])
+      @cocktailposts = current_user.feed_cocktailposts.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'レシピのシェアに失敗しました。'
       render 'toppages/index'
   end
