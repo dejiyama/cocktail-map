@@ -1,37 +1,28 @@
 <ul class="media-list">
-  
   <% cocktailposts.each do |cocktailpost| %>
-  
-  <% user = cocktailpost.user %>
-  
-   <li class="media">
-     <div class="media-left">
-       <img class="media-object img-rounded" src="
-<%= gravatar_url(user,options = { size: 50 }) %>
-"alt="">
-     </div>
+    <% user = cocktailpost.user %>
+    <div class="media-left">
+      <img class="media-object img-rounded" src="<%= gravatar_url(user,options = { size: 50 }) %>" alt="">
+    </div>
     <div class="media-body">
       <div>
-        
-<%= link_to user.name, user_path(user) %>
- <span class="text-muted">Posted at
-<%= cocktailpost.created_at %></span>
+        <%= link_to user.name, user_path(user) %>
+        <span class="text-muted">Posted at<%= cocktailpost.created_at %></span>
       </div>
       <div>
         <p>
-<%= cocktailpost.content %>
+          <%= cocktailpost.content %>
         </p>
       </div>
       <div>
-        
-<% if current_user == cocktailpost.user %>
-
-<%= link_to "Delete",cocktailpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
-
-<% end %>
+        <% if current_user == cocktailpost.user %>
+          <%= link_to "Delete",cocktailpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+        <% end %>
+        <% unless current_user == cocktailpost.user %>
+          <%= render 'favorites/favorites_button', cocktailpost: cocktailpost %>
+        <% end %>
       </div>
     </div>
-   </li>
    
 <% end %>
 

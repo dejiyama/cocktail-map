@@ -8,6 +8,7 @@ Rails.application.routes.draw do
  get 'signup', to: 'users#new'
  resources :users, only: [:index, :show, :new, :create] do
   member do
+   get :favorites
    get :followings
    get :followers
   end
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
  
  resources :cocktailposts, only: [:create, :destroy]
  resources :relationships, only: [:create, :destroy]
+ resources :favorites, only: [:create, :destroy]
 end

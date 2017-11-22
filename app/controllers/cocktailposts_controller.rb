@@ -2,6 +2,9 @@ class CocktailpostsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def index
+  end
+  
   def create
     @cocktailpost = current_user.cocktailposts.build(cocktailpost_params)
     if @cocktailpost.save
@@ -32,5 +35,5 @@ end
     unless @cocktailpost
     redirect_to root_url
    end
-  end
+ end
 end

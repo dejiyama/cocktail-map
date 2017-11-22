@@ -1,0 +1,26 @@
+
+<% unless current_user == cocktailpost.user %>
+
+<% if current_user.favoriting?(cocktailpost) %>
+
+<%= form_for(current_user.favorites.find_by(cocktailpost_id: cocktailpost.id), html: { method: :delete }) do |f| %>
+
+<%= hidden_field_tag :cocktailpost_id, cocktailpost.id %>
+
+<%= f.submit 'Unfavorite', class: 'btn btn-danger btn-block' %>
+
+<% end %>
+
+<% else %>
+
+<%= form_for(current_user.favorites.build) do |f| %>
+
+<%= hidden_field_tag :cocktailpost_id, cocktailpost.id %>
+
+<%= f.submit 'Favorite', class: 'btn btn-primary btn-block' %>
+
+<% end %>
+
+<% end %>
+
+<% end %>
